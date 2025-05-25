@@ -178,7 +178,9 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is open-source and available for personal and commercial use under the MIT License.
+This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
+
+The MIT License is a permissive free software license originating at the Massachusetts Institute of Technology. It puts only very limited restriction on reuse and has high compatibility with other licenses, making it ideal for open source projects.
 
 ## Acknowledgements
 
