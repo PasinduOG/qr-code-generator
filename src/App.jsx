@@ -6,10 +6,10 @@ import QRCodeDisplay from "./components/QRCodeDisplay";
 function App() {
   const [qrCode, setQrCode] = useState("");
   const [loading, setLoading] = useState(false);
-  
+
   const generateQRCode = async (text, settings) => {
     setLoading(true);
-    
+
     try {
       const response = await fetch("http://localhost:5000/api/generate", {
         method: "POST",
@@ -21,11 +21,11 @@ function App() {
           ...settings,
         }),
       });
-      
+
       if (!response.ok) {
         throw new Error("Failed to generate QR code");
       }
-      
+
       const data = await response.json();
       setQrCode(data.qrCode);
     } catch (err) {
@@ -35,10 +35,10 @@ function App() {
       setLoading(false);
     }
   };
-  
+
   const handleDownload = () => {
     if (!qrCode) return;
-    
+
     const link = document.createElement("a");
     link.href = qrCode;
     link.download = "qrcode.png";
@@ -46,7 +46,7 @@ function App() {
     link.click();
     document.body.removeChild(link);
   };
-  
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
@@ -58,7 +58,7 @@ function App() {
             Create beautiful QR codes for your website, business, or personal use.
           </p>
         </div>
-        
+
         <div className="bg-white shadow-xl rounded-2xl overflow-hidden">
           <div className="p-6 md:p-8">
             <div className="flex flex-col md:flex-row gap-8">
@@ -66,7 +66,7 @@ function App() {
               <div className="flex-1">
                 <QRCodeForm onGenerate={generateQRCode} isLoading={loading} />
               </div>
-              
+
               {/* Right side - QR code display */}
               <div className="flex-1">
                 <QRCodeDisplay qrCode={qrCode} onDownload={handleDownload} />
@@ -74,10 +74,13 @@ function App() {
             </div>
           </div>
         </div>
-        
+
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-500">
-             {new Date().getFullYear()} QR Code Generator. Create beautiful QR codes quickly and easily.
+            &copy; {new Date().getFullYear()} QR Code Generator by <a href="https://github.com/PasinduOG" target="_blank"><b>Pasindu OG</b></a>. Create beautiful QR codes quickly and easily.
+          </p>
+          <p className="text-sm text-gray-500">
+            All Rights Reserved
           </p>
         </div>
       </div>
