@@ -146,7 +146,7 @@ POST /api/generate
 
 Check out the live demo of the application:
 
-[Live Demo](https://pasinduog.github.io/qr-code-generator)
+[Live Demo](https://qr-code-generator-chi-drab.vercel.app/)
 
 ## Deployment
 
