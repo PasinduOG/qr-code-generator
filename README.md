@@ -2,7 +2,7 @@
 
 A beautiful and user-friendly QR code generator built with React, Vite, and Node.js.
 
-![QR Code Generator](https://via.placeholder.com/800x400?text=QR+Code+Generator)
+![QR Code Generator](resources/QR%20Code%20Generator.png)
 
 ## Features
 
