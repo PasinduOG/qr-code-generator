@@ -192,4 +192,4 @@ The MIT License is a permissive free software license originating at the Massach
 
 ## Author
 
-- [PasinduOG](https://github.com/PasinduOG) - Developer
+- [PasinduOG](https://github.com/PasinduOG) - Full Stack Developer
