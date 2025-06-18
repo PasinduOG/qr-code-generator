@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import QRCodeForm from "./components/QRCodeForm";
 import QRCodeDisplay from "./components/QRCodeDisplay";
+import DarkModeToggle from "./components/DarkModeToggle";
 
 function App() {
   const [qrCode, setQrCode] = useState("");
@@ -46,20 +47,18 @@ function App() {
     link.click();
     document.body.removeChild(link);
   };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
+      <DarkModeToggle />
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+          <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl sm:tracking-tight lg:text-6xl">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">QR Code</span> Generator
           </h1>
-          <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl">
+          <p className="mt-3 max-w-md mx-auto text-base text-gray-500 dark:text-gray-300 sm:text-lg md:mt-5 md:text-xl">
             Create beautiful QR codes for your website, business, or personal use.
           </p>
-        </div>
-
-        <div className="bg-white shadow-xl rounded-2xl overflow-hidden">
+        </div>        <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl overflow-hidden transition-colors duration-200">
           <div className="p-6 md:p-8">
             <div className="flex flex-col md:flex-row gap-8">
               {/* Left side - Input settings */}
@@ -76,10 +75,10 @@ function App() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} QR Code Generator by <a href="https://github.com/PasinduOG" target="_blank"><b>Pasindu OG</b></a>. Create beautiful QR codes quickly and easily.
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            &copy; {new Date().getFullYear()} QR Code Generator by <a href="https://github.com/PasinduOG" target="_blank" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"><b>Pasindu OG</b></a>. Create beautiful QR codes quickly and easily.
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             All Rights Reserved
           </p>
         </div>

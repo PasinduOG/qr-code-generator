@@ -1,0 +1,6 @@
+# Allow all web crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location (if you create one in the future)
+# Sitemap: https://qr-code-gen-80b5c9da635a.herokuapp.com/sitemap.xml
