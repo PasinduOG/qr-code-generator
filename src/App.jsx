@@ -6,12 +6,12 @@ import QRCodeDisplay from "./components/QRCodeDisplay";
 function App() {
   const [qrCode, setQrCode] = useState("");
   const [loading, setLoading] = useState(false);
-
   const generateQRCode = async (text, settings) => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/generate", {
+      // Use relative path for API in production, works with both dev and production
+      const response = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

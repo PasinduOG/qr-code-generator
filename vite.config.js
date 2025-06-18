@@ -13,5 +13,14 @@ export default defineConfig({
     alias: {
       'prop-types': path.resolve(__dirname, 'node_modules/prop-types'),
     }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        secure: false
+      }
+    }
   }
 })

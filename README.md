@@ -193,3 +193,49 @@ The MIT License is a permissive free software license originating at the Massach
 ## Author
 
 - [PasinduOG](https://github.com/PasinduOG) - Full Stack Developer
+
+## Deployment to Heroku
+
+This application is configured to be easily deployed to Heroku. Follow these steps to deploy your own instance:
+
+### Prerequisites
+
+- [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed
+- GitHub account
+- Git installed on your local machine
+
+### Deployment Steps
+
+1. **Login to Heroku**
+   ```bash
+   heroku login
+   ```
+
+2. **Create a new Heroku app**
+   ```bash
+   heroku create your-qr-code-app-name
+   ```
+
+3. **Set environment variables (if needed)**
+   ```bash
+   heroku config:set NODE_ENV=production
+   ```
+
+4. **Deploy the application**
+   You can deploy directly from your local repository:
+   ```bash
+   git push heroku main
+   ```
+   
+   Or connect your GitHub repository to Heroku for automatic deployments through the Heroku Dashboard.
+
+5. **Open the deployed application**
+   ```bash
+   heroku open
+   ```
+
+### Important Notes
+
+- The application is configured to serve the React frontend from the Express backend in production
+- Build process is automatically handled by the `heroku-postbuild` script
+- The Procfile is already set up to start the server correctly on Heroku

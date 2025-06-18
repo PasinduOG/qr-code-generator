@@ -3,8 +3,15 @@ import QRCode from 'qrcode';
 import cors from 'cors';
 import { config } from 'dotenv';
 import process from 'process';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 // Load environment variables from .env file
 config();
+
+// ES module __dirname equivalent
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -71,6 +78,17 @@ app.post('/api/generate', async (req, res) => {
         }
     }
 });
+
+// Serve static files from the React app in production
+if (process.env.NODE_ENV === 'production') {
+    // Serve static files
+    app.use(express.static(path.join(__dirname, 'dist')));
+    
+    // Handle React routing, return all requests to React app
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    });
+}
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
