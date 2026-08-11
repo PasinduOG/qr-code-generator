@@ -2,9 +2,9 @@ import express from 'express';
 import QRCode from 'qrcode';
 import cors from 'cors';
 import { config } from 'dotenv';
-import process from 'process';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import process from 'node:process';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 // Load environment variables from .env file
 config();
