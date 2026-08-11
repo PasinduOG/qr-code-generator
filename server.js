@@ -1,6 +1,8 @@
 import express from 'express';
 import QRCode from 'qrcode';
 import cors from 'cors';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 import { config } from 'dotenv';
 import process from 'node:process';
 import path from 'node:path';
@@ -16,9 +18,24 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use(helmet());
+
 // Middleware
-app.use(express.json());
-app.use(cors());
+app.use(express.json({ limit: '10kb' }));
+
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: { error: 'Too many requests from this IP, please try again after 15 minutes' }
+});
+
+const corsOptions = {
+    origin: process.env.NODE_ENV === 'production' 
+        ? ['https://your-production-domain.com']
+        : ['http://localhost:5173', 'http://localhost:3000'],
+    methods: ['POST'],
+};
+app.use(cors(corsOptions));
 
 // Route to generate QR code
 app.post('/api/generate', async (req, res) => {
@@ -40,7 +57,7 @@ app.post('/api/generate', async (req, res) => {
         }
 
         // Validate size
-        if (size && (isNaN(size) || size < 100 || size > 1000)) {
+        if (size && (Number.isNaN(size) || size < 100 || size > 1000)) {
             return res.status(400).json({ error: 'Size must be a number between 100 and 1000' });
         }
 
